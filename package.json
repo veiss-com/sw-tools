@@ -1,0 +1,44 @@
+{
+  "name": "@veiss-com/sw-tools",
+  "version": "1.0.0",
+  "description": "An utility library to easily configure a Service Worker",
+  "main": "./lib/swTools.min.js",
+  "unpkg": "./lib/swTools.min.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "rename": "renamer -e ext -f js -r min.js \"lib/*\"",
+    "start": "babel -d lib -w src && npm run rename",
+    "build": "babel -d lib src && npm run rename",
+    "prepublish": "npm test && npm run clean && npm run build",
+    "test": "echo \"No test specified\""
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/veiss-com/sw-tools"
+  },
+  "keywords": [
+    "library",
+    "service",
+    "sw",
+    "veiss",
+    "worker",
+    "tools"
+  ],
+  "author": "Veiss Comunicación <githubveiss@veiss.com> (https://www.veiss.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veiss-com/sw-tools/issues"
+  },
+  "homepage": "https://github.com/veiss-com/sw-tools#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-preset-minify": "^0.5.1",
+    "renamer": "^1.1.2",
+    "rimraf": "^3.0.0"
+  }
+}

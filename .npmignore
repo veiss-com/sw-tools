@@ -1,0 +1,10 @@
+# Dependency directories.
+node_modules
+
+# NPM package lock.
+package-lock.json
+
+# Project files.
+src
+.babelrc
+.gitignore
