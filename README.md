@@ -33,7 +33,7 @@ Developed and maintained by [Veiss Comunicación].
 1. Install the library via NPM.
 
     ```bash
-    npm install sw-tools --save-dev
+    npm install @veiss-com/sw-tools --save-dev
     ```
 
 2. Copy **sw.min.js** from lib folder to the web root.
