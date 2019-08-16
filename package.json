@@ -1,6 +1,6 @@
 {
   "name": "@veiss-com/sw-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An utility library to easily configure a Service Worker",
   "main": "./lib/swTools.min.js",
   "unpkg": "./lib/swTools.min.js",
