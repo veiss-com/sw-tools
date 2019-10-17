@@ -13,7 +13,7 @@
  * @license MIT
  *
  * Created at     : 2019-08-16 09:47:00
- * Last modified  : 2019-08-16 12:22:32
+ * Last modified  : 2019-10-17 16:52:11
  */
 
 'use strict';
@@ -434,6 +434,10 @@ function prefetch(urls) {
     }
 
     return Promise.all(urls.map(url => {
+        if (undefined === url) {
+            return;
+        }
+
         var cacheKey = cacheName('content');
 
         return fetch(url)
