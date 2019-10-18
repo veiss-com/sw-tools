@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/veiss-com/sw-tools/blob/master/LICENSE) [![npm (scoped)](https://img.shields.io/npm/v/@veiss-com/sw-tools)](https://www.npmjs.com/package/@veiss-com/sw-tools)
 
-Service Worker helper library to simplify the usage of some of its most common features. Includes tools such as: cache management, prefetching, offline responses, deferring, ...
+Dependency free Service Worker helper library to simplify the usage of some of its most common features. Includes tools such as: cache management, prefetching, offline responses, deferring, ...
 
 Developed and maintained by [Veiss Comunicación].
 
@@ -59,6 +59,8 @@ The library divides cache elements in 3 different caches:
 * image
 
 #### Excluding elements
+
+Form pages and administrations should be excluded to avoid unwanted behaviors.
 
 ##### 1. Disable the entire cache
 
@@ -136,6 +138,8 @@ prefetch: {
 }
 ```
 
+> **Note:** Forms and administrations should be excluded from being prefetched to avoid unwanted behaviors.
+
 #### Slow connections
 
 To avoid problems with the prefetch in slow connections, use the api [Network Information]. Although it is under development, it is already available in some of the most used mobile browsers ([see caniuse]). Whenever the user is browsing through a slow connection, URL prefetch will be avoided.
@@ -185,6 +189,12 @@ One of the main causes of a website to load slowly are images. Not all images ar
 The library allows replacing the images with svgs of the same size and loading the original as the user scrolls the page.
 
 For that, simply add the _data-defer_ attribute to the images that you wish to postpone.
+
+In addition, you have to add the width and height attributes to the image to create a svg of the same dimensions as the original.
+
+```html
+<img src="SRC" width="XXX" height="YYY">
+```
 
 In the library configuration you can specify the background color of the svg.
 
