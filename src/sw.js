@@ -13,14 +13,14 @@
  * @license MIT
  *
  * Created at     : 2019-08-16 09:47:00
- * Last modified  : 2019-10-17 16:52:11
+ * Last modified  : 2019-10-18 08:20:52
  */
 
 'use strict';
 
 // Global Service Worker configuration.
 var globalConfig = {
-    version: 'v1.0.0',
+    version: 'v1.0.1',
     analytics: {
         store: 'analytics',
         version: 1
@@ -292,7 +292,7 @@ function deferYoutubeVideos(response) {
 
     return copy.text().then(body => {
         if (config.defer.youtube.enabled) {
-            body = body.replace(/<iframe (.*) src="https:\/\/www.youtube.com\/embed\/([a-z0-9\-]+)" (.*)><\/iframe>/gi, '<div style="overflow:hidden;padding-top:56.25%;position:relative;"><iframe style="border:0;height:100%;left:0;position:absolute;top:0;width:100%;" $1 src="https://www.youtube.com/embed/$2" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/$2?autoplay=1><img src=https://img.youtube.com/vi/$2/hqdefault.jpg><span>▶</span></a>" $3></iframe></div>');
+            body = body.replace(/<iframe (.*) data-yt-src="https:\/\/www.youtube.com\/embed\/([a-z0-9\-]+)" (.*)><\/iframe>/gi, '<div style="overflow:hidden;padding-top:56.25%;position:relative;"><iframe style="border:0;height:100%;left:0;position:absolute;top:0;width:100%;" $1 src="https://www.youtube.com/embed/$2" srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/$2?autoplay=1><img src=https://img.youtube.com/vi/$2/hqdefault.jpg><span>▶</span></a>" $3></iframe></div>');
         }
 
         return new Response(body, {

@@ -13,7 +13,7 @@
  * @license MIT
  *
  * Created at     : 2019-08-16 09:41:53
- * Last modified  : 2019-08-16 10:07:30
+ * Last modified  : 2019-10-18 08:21:00
  */
 var swTools = (function() {
     'use strict';
@@ -165,6 +165,26 @@ var swTools = (function() {
                     rect.bottom >= 0
                 );
             }
+
+            // YouTube defer handle.
+            var videoEvents = ['resize', 'scroll'];
+            var videoHandler = function() {
+                document.querySelectorAll('iframe').forEach(iframe => {
+                    if (!isElementInViewport(iframe)) {
+                        return;
+                    }
+
+                    if (!iframe.hasAttribute('data-yt-src')) {
+                        return;
+                    }
+
+                    iframe.src = iframe.getAttribute('data-yt-src');
+                    iframe.removeAttribute('data-yt-src');
+                });
+            }
+
+            videoEvents.forEach(eventType => self.addEventListener(eventType, videoHandler));
+            videoHandler();
         });
 
         this.initialized = true;
