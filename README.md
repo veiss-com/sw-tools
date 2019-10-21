@@ -211,6 +211,12 @@ defer: {
 
 When the user enters a page that includes an iframe with a YouTube video, the browser downloads different javascripts and styles to display the player. To save these unnecessary requests, the possibility of replacing the player with a thumbnail of the video ([original idea]) has been added to the library. When clicked, it will load the player with the video.
 
+To achieve this functionality, simply replace the _src_ attribute of the iframe with _data-yt-src_.
+
+```html
+<iframe data-yt-src="https://www.youtube.com/embed/XXXXXXXXX"></iframe>
+```
+
 This functionality is enabled by default and can be disabled from the configuration.
 
 ```js
