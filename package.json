@@ -1,6 +1,6 @@
 {
   "name": "@veiss-com/sw-tools",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "An utility library to easily configure a Service Worker",
   "main": "./lib/swTools.min.js",
   "unpkg": "./lib/swTools.min.js",
@@ -34,11 +34,11 @@
   },
   "homepage": "https://github.com/veiss-com/sw-tools#readme",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "babel-preset-minify": "^0.5.1",
-    "renamer": "^1.1.2",
+    "renamer": "^1.1.4",
     "rimraf": "^3.0.0"
   }
 }

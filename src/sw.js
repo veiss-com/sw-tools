@@ -13,14 +13,14 @@
  * @license MIT
  *
  * Created at     : 2019-08-16 09:47:00
- * Last modified  : 2019-10-18 08:20:52
+ * Last modified  : 2019-12-10 17:41:31
  */
 
 'use strict';
 
 // Global Service Worker configuration.
 var globalConfig = {
-    version: 'v1.0.1',
+    version: 'v1.1.0',
     analytics: {
         store: 'analytics',
         version: 1
@@ -270,6 +270,9 @@ function cacheName(key) {
  */
 function deferImages(response) {
     var copy = response.clone();
+    if (!copy.ok || isImageResponse(copy.headers)) {
+        return response;
+    }
 
     return copy.text().then(body => {
         body = changeImages(body);
@@ -289,6 +292,9 @@ function deferImages(response) {
  */
 function deferYoutubeVideos(response) {
     var copy = response.clone();
+    if (!copy.ok || isImageResponse(copy.headers)) {
+        return response;
+    }
 
     return copy.text().then(body => {
         if (config.defer.youtube.enabled) {
@@ -329,6 +335,18 @@ function fetchFromCache(event) {
  */
 function getObjectStore(storeName, mode) {
     return globalConfig.analytics.database.transaction(storeName, mode).objectStore(storeName);
+}
+
+/**
+ * Check if Response is an image.
+ *
+ * @param {string} headers
+ *
+ * @return {boolean}
+ */
+function isImageResponse(headers)
+{
+    return (-1 !== headers.get('content-type').indexOf('image'))
 }
 
 /**
