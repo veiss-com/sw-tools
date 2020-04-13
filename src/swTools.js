@@ -75,6 +75,10 @@ var swTools = (function() {
             }
 
             function startPrefetch() {
+                if (!module.swConfig.prefetch.enabled) {
+                    return;
+                }
+
                 document.querySelectorAll('a').forEach(link => {
                     if (!isPrefetchable(link)) {
                         return;
@@ -93,7 +97,8 @@ var swTools = (function() {
 
             function isPrefetchable(link) {
                 if (
-                    0 != link.href.indexOf(location.origin)           // Other domain links.
+                    'string' !== typeof link.href                     // Href might not be a string.
+                    || 0 != link.href.indexOf(location.origin)        // Other domain links.
                     || link.href === location.href                    // Current page.
                     || link.hasAttribute('data-no-prefetch')          // Marked not to prefetch.
                     || location.href.length == link.href.indexOf('#') // Anchors.
